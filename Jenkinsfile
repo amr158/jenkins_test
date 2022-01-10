@@ -3,9 +3,8 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                bat "rmdir -p jenkins_test"
-                bat "git clone https://github.com/amr158/jenkins_test.git"
-                bat "mvn clean -f jenkins_test"
+                sh "git clone https://github.com/amr158/jenkins_test.git"
+                sh "mvn clean -f jenkins_test"
             }
         }
         stage('Test') { 
