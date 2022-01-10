@@ -3,17 +3,19 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                echo "dot"
+                bat "rmdir -p jenkins_test"
+                bat "git clone git@github.com:amr158/jenkins_test.git"
+                bat "mvn clean -f jenkins_test"
             }
         }
         stage('Test') { 
             steps {
-                echo "dot"
+                bat "mvn test -f jenkins_test"
             }
         }
         stage('Deploy') { 
             steps {
-                echo "dot"
+                bat "mvn package -f jenkins_test"
             }
         }
     }
